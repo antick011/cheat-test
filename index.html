@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        body {
+            font-family: arial, sans-serif;
+            text-align: center;
+            margin: o;
+            padding: 0;
+        }
+        h2 {
+            font-size: 1.5em;
+        }
+        form {
+            margin: 20px;
+            width: 90%;
+        }
+        div {
+            margin-bottom: 15px;
+        }
+        select, button {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            margin-top: 5px;
+        }
+        #result {
+            display: none;
+        }
+        @media (max-width: 375px) {
+            h2 {
+                font-size: 1.2em;
+            }
+            form {
+                width: 100%;
+                padding: 10px;
+            }
+            select, button {
+                font-size: 0.9em;
+                padding: 8px;
+            }
+            #result h2 {
+                font-size: 1.3em;
+            }
+            #result img {
+                height: 100px;
+                width: 100px;
+            }
+            #result p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2 id="title">Answer These Questions</h2>
+    <form id="quizForm">
+        <div>
+            <p>Question 1: Who is your favourite cricketer?</p>
+            <select id="q1">
+                <option value="op1">Virat Kohli</option>
+                <option value="op2">MS Dhoni</option>
+                <option value="op3">Rohit Sharma</option>
+                <option value="op4">KL Rahul</option>
+            </select>
+        </div>
+        <div>
+            <p>Question 2: What is your favourite food?</p>
+            <select id="q2">
+                <option value="op1">Momo</option>
+                <option value="op2">Biriyani</option>
+                <option value="op3">Noodles</option>
+                <option value="op4">Sweets</option>
+            </select>
+        </div>
+        <div>
+            <p>Question 3: Which Movie Universe you love?</p>
+            <select id="q3">
+                <option value="op1">Marvels</option>
+                <option value="op2">DC</option>
+                <option value="op3">Harry Poter</option>
+                <option value="op4">Star Wars</option>
+            </select>
+        </div>
+        <button type="button" onclick="checkAnswer()">Submit</button>
+    </form>
+
+    <div id="result" style="display: none;">
+        <h2>Welcome Rupkatha Roy!</h2>
+        <img src="img.jpg" class="img">
+        <h2>Happy Birthday</h2>
+        <audio src="song.mpeg" id="music"></audio>
+    </div>
+
+    <script>
+        const answers = {
+            q1: "op4",
+            q2: "op2",
+            q3: "op3"
+        };
+        function checkAnswer() {
+            const userAnswers = {
+                q1: document.getElementById("q1").value,
+                q2: document.getElementById("q2").value,
+                q3: document.getElementById("q3").value
+            };
+
+            if (userAnswers.q1 === answers.q1 &&
+                userAnswers.q2 === answers.q2 &&
+                userAnswers.q3 === answers.q3 
+            ) {
+                document.getElementById("title").style.display = "none";
+                document.getElementById("quizForm").style.display = "none";
+                document.getElementById("result").style.display = "block";
+                document.getElementById("music").play();
+            }
+            else {
+                alert("You don't have permission to access further.");
+            }
+            
+        }
+    </script>
+</body>
+</html>
